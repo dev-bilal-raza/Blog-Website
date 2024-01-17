@@ -43,16 +43,16 @@ function App() {
     </div>
   ) : (
     <div className='flex flex-col justify-between w-full items-center h-[100vh]'>
-  <div className='w-full mb-20'>
+      <div className='w-full mb-20'>
 
-       <Header />
-  </div>
-  
+        <Header />
+      </div>
+
       <div className='h-full'>
-      <Loader />
+        <Loader />
       </div>
       <div>
-      <Footer />
+        <Footer />
       </div>
     </div>
   )

@@ -13,8 +13,12 @@ import Loader from '../components/loader/Loader';
 function Home() {
 	const userStatus = useSelector(state => state.auth.status);
 	const [loading, setLoading] = useState(false);
+	const [isIncrease, setIsIncrease] = useState(false);
 	// console.log(userStatus);
 	const [posts, setposts] = useState([])
+	const lengthIncreaser = () => {
+		setIsIncrease(!isIncrease)
+	}
 	useEffect(() => {
 		postService.getPosts().then((post) => {
 			if (post) {
@@ -41,15 +45,38 @@ function Home() {
 							<section className='flex flex-col gap-8  p-7'>
 								<h2 className='text-center font-serif text-5xl '>All Blogs</h2>
 								<div className='grid grid-cols-1 sm:grid-cols-2 bg-white rounded lg:grid-cols-3 gap-10 p-3'>
-									{posts.map((post) =>
-									(<div className='bg-white rounded-md border shadow-[0_3px_10px_rgb(0,0,0,0.2)]' key={post.$id} data-aos="fade-right">
-										{/* <div>hello</div> */}
-										<PostCard {...post} />
+									{posts.map((post, i) =>
+										<div>
+											{!isIncrease ? (
+												<div>
+													{i < 9 ? (
+														<div className='bg-white rounded-md border shadow-[0_3px_10px_rgb(0,0,0,0.2)]' key={post.$id} data-aos="fade-right">
+															<PostCard {...post} />
 
-									</div>)
+														</div>
+													) : ""}
+												</div>
+											) : (
+												<div className='bg-white rounded-md border shadow-[0_3px_10px_rgb(0,0,0,0.2)]' key={post.$id} data-aos="fade-right">
+													<PostCard {...post} />
+													{/* <button onClick={lengthIncreaser}>decrease</button> */}
+												</div>
+											)}
+										</div>
 									)}
 								</div>
 							</section>
+							{!isIncrease ?
+								(<div className='flex gap-3 justify-center items-center w-full'>
+									<button onClick={lengthIncreaser} className='text-xl font-semibold hover:text-gray-700'>Show More</button>
+									<img className='w-10  hover:cursor-pointer' onClick={lengthIncreaser} src="/assets/showMore.png" alt="Show More" />
+								</div>
+								) : (
+									<div className='flex gap-3 justify-center items-center w-full'>
+										<button onClick={lengthIncreaser} className='text-xl font-semibold hover:text-gray-700'>Show Less</button>
+										<img onClick={lengthIncreaser} className='w-10  hover:cursor-pointer' src={"/assets/showLess.png"} alt="Show Less" />
+									</div>
+								)}
 						</Wrapper>
 					</div>
 				) : (
