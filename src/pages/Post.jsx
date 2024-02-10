@@ -4,6 +4,7 @@ import { useNavigate, useParams, Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Button } from '../components/Importer'
 import parse from "html-react-parser";
+import Loader from '../components/loader/Loader'
 
 const Post = () => {
 	const [post, setpost] = useState(null);
@@ -11,12 +12,13 @@ const Post = () => {
 	const { slug } = useParams()
 	const userData = useSelector((state) => state.auth.userData)
 	const isAuthor = post && userData ? userData.$id === post.userId : false;
-
+	const [loading, setLoading] = useState(true);
 	useEffect(() => {
 
 		if (slug) {
 			postService.getPost(slug).then((post) => {
 				if (post) {
+					setLoading(false)
 					setpost(post)
 					// console.log("Post "+ post.content);
 				} else navigate("/")
@@ -33,6 +35,13 @@ const Post = () => {
 				navigate("/")
 			}
 		})
+	}
+	if (loading) {
+		return (
+			<div className='flex justify-center items-center m-52'>
+				<Loader />
+			</div>
+		)
 	}
 	return post ? (
 		<section className='flex border flex-col m-7 gap-5 shadow-[0_3px_10px_rgb(0,0,0,0.2)] items-center p-6'>

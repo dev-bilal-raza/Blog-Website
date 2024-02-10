@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import authService from '../../appwrite/auth'
 import { postService } from '../../appwrite/config'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '../Importer/index'
@@ -68,13 +67,13 @@ function PostForm({ post }) {
 	}, []);
 
 	useEffect(() => {
-		const subcrition = watch((value, { name }) => {
+		const subscrpition = watch((value, { name }) => {
 			if (name === 'title') {
 				setValue("slug", slugTransform(value.title), { shouldValidate: true })
 			}
 		})
 
-		return () => subcrition.unsubscribe()
+		return () => subscrpition.unsubscribe()
 	}, [watch, slugTransform, setValue])
 
 
