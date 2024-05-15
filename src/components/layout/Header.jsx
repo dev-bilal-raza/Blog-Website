@@ -8,7 +8,7 @@ import ResponsiveNavber from "./ResponsiveNavber"
 
 export let navItems;
 const Header = () => {
-	
+
 	const navigate = useNavigate()
 	const authStatus = useSelector((state) => state.auth.status);
 	// console.log(authStatus);
@@ -42,9 +42,9 @@ const Header = () => {
 
 
 	return (
-		<header className="sticky top-0 z-20 bg-white sm:bg-white/25 backdrop-blur-md ">
-			<Wrapper >
-				<nav className="flex justify-between items-center">
+		<header className="sticky top-0 z-20 bg-gradient-to-tr from-white/20 via-white to-gray-400 pb-1.5">
+			<Wrapper>
+				<nav className="flex justify-between items-center mx-2">
 					<div>
 						<Link to={"/"}>
 							<img src={"/assets/bloglogo.png"} alt="logo" width={50} height={20}
@@ -53,11 +53,9 @@ const Header = () => {
 					<ul className="hidden sm:flex items-center gap-7 ">
 						{navItems.map((item) => (
 							item.active ? (
-								<li key={item.name} className="hover:underline font-normal text-lg" onClick={() => navigate(item.slug)}>{item.name}</li>
+								<li key={item.name} className="font-para hover:cursor-pointer hover:text-gray-500 text-xl" onClick={() => navigate(item.slug)}>{item.name}</li>
 							) : null
 						))}
-
-
 					</ul>
 					{authStatus && (
 						<ul className="sm:block hidden">

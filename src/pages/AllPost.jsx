@@ -20,13 +20,12 @@ const AllPost = () => {
 	})
 	if (posts.length > 0) {
 		return (
-			<div className=' shadow-[0_3px_10px_rgb(0,0,0,0.2)] mt-16 mb-16'>
-				<Wrapper>
-					<section className='flex flex-col gap-8  p-7'>
-						<h2 className='text-center font-serif text-5xl '>All Blogs</h2>
-						<div className='grid grid-cols-1 sm:grid-cols-2 bg-white rounded lg:grid-cols-3 gap-10 p-3'>
+			<div className=''>
+					<section className='flex flex-col gap-8 bg-gradient-to-tr from-white to-black p-6'>
+						<h2 className='text-center font-heading text-5xl text-white'>All Blogs</h2>
+						<div className='grid grid-cols-1 sm:grid-cols-2 rounded lg:grid-cols-3 gap-20 p-11'>
 							{posts.map((post) =>
-							(<div className='bg-white rounded-md border shadow-[0_3px_10px_rgb(0,0,0,0.2)]' data-aos="fade-right" key={post.$id}>
+							(<div className='bg-white rounded-md border hover:shadow-[0px_4px_22px_3px_#2d3748]' data-aos="fade-right" key={post.$id}>
 								{/* <div>hello</div> */}
 								<PostCard {...post} />
 
@@ -34,7 +33,6 @@ const AllPost = () => {
 							)}
 						</div>
 					</section>
-				</Wrapper>
 			</div>
 		)
 	} else {

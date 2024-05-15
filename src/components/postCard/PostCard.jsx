@@ -14,10 +14,10 @@ function PostCard({ $id, title,  featuredImage }) {
 				<img width={300} height={300} className='w-full object-cover  h-48 rounded-t-md' src={postService.getPreviewFile(featuredImage)} alt={title} />
 			</div>
 			<div className='m-3 flex flex-col items-center gap-2'>
-				<h3 className='text-xl font-medium text-center '>{myTitle}</h3>
+				<h3 className='text-xl font-semibold text-center font-heading'>{myTitle}</h3>
 				{/* <div className=' '>{parser(content)}</div> */}
 				<Link to={`/post/${$id}`}>
-					<button className='bg-slate-200 font-light hover:bg-slate-100  p-2 rounded-lg text-sm'>View Post </button>
+					<button className=' m-2 bg-slate-200 font-light hover:bg-slate-100 p-2 px-4 rounded-lg font-para'>View Post </button>
 				</Link>
 				{/* <h1>hello</h1> */}
 			</div>

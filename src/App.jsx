@@ -8,16 +8,16 @@ import { Outlet } from 'react-router-dom'
 import Loader from './components/loader/Loader'
 // import envVariables from './envVariables/envVariables'
 function App() {
-  const [loading, setloading] = useState(true);
-  const disaptch = useDispatch();
+  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
   // console.log(envVariables)
   useEffect(() => {
     authService.getUserDetails()
       .then((userData) => {
         if (userData) {
-          disaptch(login({ userData }))
+          dispatch(login({ userData }))
         } else {
-          disaptch(logout())
+          dispatch(logout())
         }
       })
       .catch((error) => {
@@ -25,7 +25,7 @@ function App() {
       }
       )
       .finally(() => {
-        setloading(false)
+        setLoading(false)
       })
 
 
@@ -42,19 +42,17 @@ function App() {
       </div>
     </div>
   ) : (
-    <div className='flex flex-col justify-between w-full items-center h-[100vh]'>
+    <main className='flex flex-col justify-between w-full items-center h-[100vh]'>
       <div className='w-full mb-20'>
-
         <Header />
       </div>
-
       <div className='h-full'>
         <Loader />
       </div>
       <div>
         <Footer />
       </div>
-    </div>
+    </main>
   )
 }
 
