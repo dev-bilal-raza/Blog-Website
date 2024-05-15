@@ -40,7 +40,7 @@ function Home() {
 				</section>
 				{/* <div className=' absolute top-0 bottom-0 left-0 right-0 bg-slate-500 h-full'/> */}
 				{loading ? (
-					<div className='bg-gradient-to-b from-white to-black mt-16 p-7'>
+					<div className='bg-gradient-to-b from-white to-black mt-16 p-8'>
 							<section className='flex flex-col gap-8 p-7'>
 								<h2 className='text-center font-heading text-5xl font-bold '>All Blogs</h2>
 								<div className='grid grid-cols-1 sm:grid-cols-2 rounded lg:grid-cols-3 gap-16 p-3'>
